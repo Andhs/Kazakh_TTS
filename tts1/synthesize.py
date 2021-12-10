@@ -43,7 +43,7 @@ text2speech.spc2wav = None  # Disable griffin-lim
 args = get_args()
 sample_text = args.text
 with torch.no_grad():
-    _, c_mel, *_ = text2speech(sample_text.lower())
+    c_mel = text2speech(sample_text.lower())['feat_gen']
     wav = vocoder.inference(c_mel)
     
 ## here all of your synthesized audios will be saved
